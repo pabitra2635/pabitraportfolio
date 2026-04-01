@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pabitra | Web Developer & GATE 2026 Qualified</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#4facfe',
+                            DEFAULT: '#00f2fe',
+                            dark: '#00c3ff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        .orb-1 { top: -10%; left: -10%; width: 40vw; height: 40vw; background: rgba(79, 172, 254, 0.15); }
+        .orb-2 { bottom: 20%; right: -10%; width: 35vw; height: 35vw; background: rgba(0, 242, 254, 0.15); animation-delay: -5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(30px) scale(1.1); }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="antialiased relative">
+
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-brand-light to-brand">
+                Pabitra.
+            </a>
+            
+            <div class="hidden md:flex space-x-8 items-center glass px-6 py-2 rounded-full">
+                <a href="#about" class="text-sm font-medium hover:text-brand transition-colors">About</a>
+                <a href="#skills" class="text-sm font-medium hover:text-brand transition-colors">Skills</a>
+                <a href="#projects" class="text-sm font-medium hover:text-brand transition-colors">Projects</a>
+                <a href="#gate" class="text-sm font-medium hover:text-brand transition-colors">GATE 2026</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="#contact" class="px-5 py-2 rounded-full border border-brand/50 text-brand hover:bg-brand hover:text-slate-900 transition-all text-sm font-semibold">
+                    Let's Talk
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
+                <i class="fas fa-bars transition-all duration-300"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-lg border-b border-white/10 flex-col items-center py-6 space-y-6 shadow-xl transition-all duration-300">
+            <a href="#about" class="text-base font-medium text-slate-300 hover:text-brand transition-colors mobile-link">About</a>
+            <a href="#skills" class="text-base font-medium text-slate-300 hover:text-brand transition-colors mobile-link">Skills</a>
+            <a href="#projects" class="text-base font-medium text-slate-300 hover:text-brand transition-colors mobile-link">Projects</a>
+            <a href="#gate" class="text-base font-medium text-slate-300 hover:text-brand transition-colors mobile-link">GATE 2026</a>
+            <a href="#contact" class="px-8 py-2.5 rounded-full border border-brand/50 text-brand hover:bg-brand hover:text-slate-900 transition-all text-sm font-semibold mobile-link">Let's Talk</a>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative">
+        <div class="max-w-4xl mx-auto text-center z-10">
+            
+            <div class="reveal mb-6 flex justify-center">
+                <div class="relative w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-r from-brand-light to-brand shadow-[0_0_30px_rgba(0,242,254,0.3)] hover:shadow-[0_0_50px_rgba(0,242,254,0.5)] transition-shadow duration-500 group">
+                    <img src="https://i.ibb.co/LmGLJb4/Whats-App-Image-2025-12-30-at-8-49-49-PM.jpg" alt="Pabitra" class="w-full h-full object-cover rounded-full border-4 border-slate-900 group-hover:scale-95 transition-transform duration-300">
+                </div>
+            </div>
+
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full glass text-sm font-medium text-brand border-brand/20 reveal" style="transition-delay: 50ms;">
+                <i class="fas fa-rocket mr-2"></i> Available for Freelance & Roles
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight reveal" style="transition-delay: 100ms;">
+                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-light to-brand">Pabitra</span><br>
+                <span class="text-3xl md:text-5xl text-slate-300 mt-2 block h-12" id="typewriter-text"></span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto reveal" style="transition-delay: 200ms;">
+                I aim to build scalable, real-world web solutions and continuously improve my skills in both web development and AI-driven technologies.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal" style="transition-delay: 300ms;">
+                <a href="#projects" class="px-8 py-3 rounded-lg bg-gradient-to-r from-brand-light to-brand text-slate-900 font-bold hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] transition-all transform hover:-translate-y-1">
+                    View Projects
+                </a>
+                <a href="#contact" class="px-8 py-3 rounded-lg glass font-semibold hover:bg-white/10 transition-all transform hover:-translate-y-1 border border-white/20">
+                    Contact Me
+                </a>
+                <a href="#" class="px-8 py-3 rounded-lg flex items-center justify-center gap-2 text-slate-300 hover:text-white transition-colors">
+                    <i class="fas fa-download"></i> Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full border-y border-white/5 bg-slate-900/50 backdrop-blur-sm py-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/5">
+                <div class="reveal">
+                    <h3 class="text-3xl font-bold text-brand mb-1">B.Tech</h3>
+                    <p class="text-sm text-slate-400">CSE (MGCU)</p>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <h3 class="text-3xl font-bold text-brand mb-1 flex items-center justify-center gap-2">
+                        <i class="fas fa-medal text-xl"></i> 2026
+                    </h3>
+                    <p class="text-sm text-slate-400">GATE Qualified</p>
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <h3 class="text-3xl font-bold text-brand mb-1">10+</h3>
+                    <p class="text-sm text-slate-400">Projects Completed</p>
+                </div>
+                <div class="reveal" style="transition-delay: 300ms;">
+                    <h3 class="text-3xl font-bold text-brand mb-1"><i class="fas fa-rocket"></i></h3>
+                    <p class="text-sm text-slate-400">Founder, Falconix Digital</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="glass p-8 rounded-2xl relative group reveal">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-light/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                    
+                    <div class="w-20 h-20 rounded-xl bg-slate-800 mb-6 border border-brand/20 overflow-hidden shadow-lg relative group-hover:border-brand/50 transition-colors duration-300">
+                        <img src="https://i.ibb.co/LmGLJb4/Whats-App-Image-2025-12-30-at-8-49-49-PM.jpg" alt="Pabitra" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+                    
+                    <div class="space-y-4 text-slate-400 text-sm md:text-base leading-relaxed">
+                        <p class="flex items-start gap-3">
+                            <i class="fas fa-code text-brand mt-1"></i>
+                            <span>I am a B.Tech Computer Science student and frontend web developer focused on building real-world, user-friendly websites.</span>
+                        </p>
+                        <p class="flex items-start gap-3">
+                            <i class="fas fa-medal text-brand mt-1"></i>
+                            <span><strong>GATE 2026 Qualified</strong> in CS, reflecting my strong problem-solving ability and technical foundation.</span>
+                        </p>
+                        <p class="flex items-start gap-3">
+                            <i class="fas fa-brain text-brand mt-1"></i>
+                            <span>Currently pursuing training in <strong>Artificial Intelligence and Data Science at C-DAC Patna</strong>, focusing on machine learning and data handling.</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="skills" class="grid grid-cols-2 gap-4 reveal" style="transition-delay: 200ms;">
+                    <div class="glass p-5 rounded-xl hover:border-brand/50 transition-colors">
+                        <i class="fab fa-html5 text-orange-500 text-2xl mb-3"></i>
+                        <h4 class="font-semibold mb-2">Frontend</h4>
+                        <p class="text-xs text-slate-400 mb-2">HTML, CSS, JavaScript</p>
+                        <ul class="text-[11px] text-slate-500 space-y-1">
+                            <li>• Built responsive & mobile sites</li>
+                        </ul>
+                    </div>
+                    <div class="glass p-5 rounded-xl hover:border-brand/50 transition-colors">
+                        <i class="fas fa-fire text-yellow-500 text-2xl mb-3"></i>
+                        <h4 class="font-semibold mb-2">Backend/Tools</h4>
+                        <p class="text-xs text-slate-400 mb-2">Firebase</p>
+                        <ul class="text-[11px] text-slate-500 space-y-1">
+                            <li>• Real-time data handling</li>
+                        </ul>
+                    </div>
+                    <div class="glass p-5 rounded-xl hover:border-brand/50 transition-colors">
+                        <i class="fas fa-code text-blue-500 text-2xl mb-3"></i>
+                        <h4 class="font-semibold mb-2">Programming</h4>
+                        <p class="text-xs text-slate-400 mb-2">C, C++, Python, SQL</p>
+                        <ul class="text-[11px] text-slate-500 space-y-1">
+                            <li>• Strong logic & fundamentals</li>
+                        </ul>
+                    </div>
+                    <div class="glass p-5 rounded-xl hover:border-brand/50 transition-colors">
+                        <i class="fas fa-tools text-purple-500 text-2xl mb-3"></i>
+                        <h4 class="font-semibold mb-2">Practical Focus</h4>
+                        <p class="text-xs text-slate-400 mb-2">UI/UX & Systems</p>
+                        <ul class="text-[11px] text-slate-500 space-y-1">
+                            <li>• Developed booking systems</li>
+                            <li>• Interactive UI design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-16 relative z-10 bg-slate-900/30 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-10 text-center reveal">
+                <h2 class="text-3xl font-bold mb-4">Experience & Achievements</h2>
+                <div class="w-20 h-1 bg-brand rounded-full mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass p-6 rounded-2xl reveal hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-brand/10 rounded-lg flex items-center justify-center mb-4 text-brand text-xl">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Founder, Falconix Digital</h3>
+                    <p class="text-sm text-slate-400">Providing custom website solutions for local businesses. Performed active outreach to 200+ businesses to solve real-world digital needs.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl reveal hover:-translate-y-1 transition-transform duration-300" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-4 text-green-400 text-xl">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Live Client Projects</h3>
+                    <p class="text-sm text-slate-400">Deployed multiple real-world clinic websites with appointment systems, and built functional apps like Gully Scorer & Falconix Gaming.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl reveal hover:-translate-y-1 transition-transform duration-300" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-4 text-purple-400 text-xl">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Certifications</h3>
+                    <p class="text-sm text-slate-400">Completed certified courses in communication, cybersecurity, and API fundamentals to ensure secure, well-rounded development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gate" class="py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 reveal">
+            <div class="relative rounded-3xl overflow-hidden p-1">
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-light via-purple-500 to-brand animate-pulse opacity-50"></div>
+                <div class="relative bg-slate-900 rounded-[23px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 glass">
+                    <div class="flex-1">
+                        <div class="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-sm font-semibold mb-4 border border-brand/20">
+                            Academic Achievement
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">GATE 2026 Qualified</h2>
+                        <p class="text-lg text-slate-300 italic border-l-4 border-brand pl-4">
+                            "Qualified in Computer Science, demonstrating strong technical foundations, rigorous problem-solving skills, and a deep understanding of core engineering principles."
+                        </p>
+                    </div>
+                    <div class="w-32 h-32 flex-shrink-0 bg-gradient-to-br from-brand to-purple-600 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(0,242,254,0.3)]">
+                        <i class="fas fa-graduation-cap text-5xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12 reveal">
+                <h2 class="text-3xl font-bold mb-4">Recent Projects</h2>
+                <div class="w-20 h-1 bg-brand rounded-full"></div>
+                <p class="text-slate-400 mt-4 max-w-2xl">Here are some of my key projects focused on solving real-world problems and improving user experience:</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] transition-all duration-300 reveal relative" style="transition-delay: 100ms;">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10 shadow-lg border border-white/20">
+                        <i class="fas fa-star mr-1"></i> Featured
+                    </div>
+                    
+                    <div class="h-56 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
+                        <img src="https://i.ibb.co/KxNbNMK7/Whats-App-Image-2026-01-29-at-11-11-55-AM-removebg-preview.png" alt="Gully Scorer Logo" class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Gully Scorer</h3>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-2">A web app for scoring local cricket matches with simple UI and real-time score updates.</p>
+                        
+                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Real-time score tracking</li>
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Easy UI for local matches</li>
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Highly mobile-friendly layout</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">HTML</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">CSS</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
+                            <span class="text-xs px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded text-blue-300 font-medium">Firebase</span>
+                        </div>
+                        
+                        <div class="flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://gullyscorer.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-slate-900 text-sm font-semibold rounded-lg transition-colors border border-brand/20">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="flex-1 text-center py-2.5 glass hover:bg-white/10 text-slate-300 hover:text-white text-sm font-semibold rounded-lg transition-colors">
+                                <i class="fas fa-info-circle mr-1"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] transition-all duration-300 reveal relative" style="transition-delay: 200ms;">
+                    <div class="h-56 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
+                        <img src="https://i.ibb.co/yB58YyCk/1000715928.png" alt="Falconix Gaming Logo" class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Falconix Gaming Website</h3>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-2">A gaming tournament website for organizing and managing online competitions seamlessly.</p>
+                        
+                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Player tournament registration</li>
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Multiple Game Modes (BR & CS)</li>
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Real-time user interaction</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">HTML/CSS</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
+                            <span class="text-xs px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded text-blue-300 font-medium">Firebase</span>
+                        </div>
+                        
+                        <div class="flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://falconixgaming.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-slate-900 text-sm font-semibold rounded-lg transition-colors border border-brand/20">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="flex-1 text-center py-2.5 glass hover:bg-white/10 text-slate-300 hover:text-white text-sm font-semibold rounded-lg transition-colors">
+                                <i class="fas fa-info-circle mr-1"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] transition-all duration-300 reveal relative" style="transition-delay: 300ms;">
+                    <div class="h-56 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
+                        <i class="fas fa-tooth text-6xl text-slate-600 group-hover:text-brand transition-colors duration-300 group-hover:scale-110"></i>
+                        <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Smile Care Dental Website</h3>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-2">A modern dental clinic website designed to help patients book appointments online.</p>
+                        
+                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Booking system integration</li>
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Before/After gallery</li>
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Fully responsive design</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">HTML</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">CSS</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
+                        </div>
+                        
+                        <div class="flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://smilecareclinnic.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-slate-900 text-sm font-semibold rounded-lg transition-colors border border-brand/20">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="flex-1 text-center py-2.5 glass hover:bg-white/10 text-slate-300 hover:text-white text-sm font-semibold rounded-lg transition-colors">
+                                <i class="fas fa-info-circle mr-1"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] transition-all duration-300 reveal relative" style="transition-delay: 400ms;">
+                    <div class="h-56 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
+                        <i class="fas fa-eye text-6xl text-slate-600 group-hover:text-brand transition-colors duration-300 group-hover:scale-110"></i>
+                        <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Eye Clinic Website</h3>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-2">A professional website for eye clinics with appointment booking and service details.</p>
+                        
+                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Streamlined appointment form</li>
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Comprehensive services section</li>
+                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Contact & Google Maps integration</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">HTML</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">CSS</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
+                        </div>
+                        
+                        <div class="flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://eyeclinicpab.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-slate-900 text-sm font-semibold rounded-lg transition-colors border border-brand/20">
+                                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                            </a>
+                            <a href="#" class="flex-1 text-center py-2.5 glass hover:bg-white/10 text-slate-300 hover:text-white text-sm font-semibold rounded-lg transition-colors">
+                                <i class="fas fa-info-circle mr-1"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 relative z-10 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold mb-4">Services</h2>
+                <div class="w-20 h-1 bg-brand rounded-full mx-auto mb-4"></div>
+                <p class="text-slate-400 max-w-2xl mx-auto">I offer specialized digital solutions designed to help professionals and businesses establish a strong online presence.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass p-6 rounded-2xl text-center hover:border-brand/50 transition-colors reveal">
+                    <div class="w-16 h-16 mx-auto bg-brand/10 rounded-full flex items-center justify-center mb-4 text-brand text-2xl">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Website Development</h3>
+                    <p class="text-sm text-slate-400">For clinics and local businesses to grow their digital footprint.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center hover:border-brand/50 transition-colors reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand/10 rounded-full flex items-center justify-center mb-4 text-brand text-2xl">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Booking Systems</h3>
+                    <p class="text-sm text-slate-400">Streamlined online appointment booking systems for services.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center hover:border-brand/50 transition-colors reveal" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand/10 rounded-full flex items-center justify-center mb-4 text-brand text-2xl">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Responsive UI</h3>
+                    <p class="text-sm text-slate-400">Modern, mobile-friendly interfaces with engaging user experiences.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center hover:border-brand/50 transition-colors reveal" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand/10 rounded-full flex items-center justify-center mb-4 text-brand text-2xl">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Custom Solutions</h3>
+                    <p class="text-sm text-slate-400">Tailor-made web solutions based entirely on specific business needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="glass rounded-3xl p-8 md:p-12 border border-white/10 reveal">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-4xl font-bold mb-6">Let's build something<br>amazing together.</h2>
+                        <p class="text-slate-400 mb-8">Currently open for freelance projects, internships, and full-time roles. Drop a message and let's discuss how I can help your business grow.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div class="w-12 h-12 glass rounded-full flex items-center justify-center group-hover:bg-brand group-hover:text-slate-900 transition-colors">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400">Email Me</p>
+                                    <p class="font-semibold">pabitramondal2635@gmail.com</p> 
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div class="w-12 h-12 glass rounded-full flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-colors">
+                                    <i class="fab fa-whatsapp text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400">WhatsApp</p>
+                                    <p class="font-semibold">+91 8637028337</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Name</label>
+                            <input id="senderName" type="text" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Email</label>
+                            <input id="senderEmail" type="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Message</label>
+                            <textarea id="senderMessage" required rows="4" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand transition-colors resize-none" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-brand text-slate-900 font-bold rounded-lg hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10 bg-slate-950 pt-12 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <a href="#" class="text-2xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-brand-light to-brand">
+                    Pabitra.
+                </a>
+                <p class="text-sm text-slate-500 mt-2">B.Tech CSE | Web Developer</p>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand hover:text-slate-900 transition-colors">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand hover:text-slate-900 transition-colors">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand hover:text-slate-900 transition-colors">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-8 pt-8 border-t border-white/5 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+            <p>&copy; 2024 Pabitra. All rights reserved.</p>
+            <p class="mt-2 md:mt-0">Designed & Built with HTML, Tailwind & JS</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const menuIcon = mobileMenuBtn.querySelector('i');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass', 'shadow-lg');
+                    navbar.classList.remove('py-4');
+                    navbar.classList.add('py-2');
+                } else {
+                    navbar.classList.remove('glass', 'shadow-lg');
+                    navbar.classList.add('py-4');
+                    navbar.classList.remove('py-2');
+                }
+            });
+
+            const textArray = [
+                "Web Developer",
+                "GATE 2026 Qualified",
+                "UI/UX Enthusiast",
+                "Problem Solver"
+            ];
+            const typingDelay = 100;
+            const erasingDelay = 50;
+            const newTextDelay = 2000; 
+            let textArrayIndex = 0;
+            let charIndex = 0;
+            const typedTextSpan = document.getElementById("typewriter-text");
+
+            function type() {
+                if (charIndex < textArray[textArrayIndex].length) {
+                    typedTextSpan.classList.add('cursor');
+                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, typingDelay);
+                } else {
+                    setTimeout(erase, newTextDelay);
+                }
+            }
+
+            function erase() {
+                if (charIndex > 0) {
+                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, erasingDelay);
+                } else {
+                    textArrayIndex++;
+                    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                    setTimeout(type, typingDelay + 500);
+                }
+            }
+
+            setTimeout(type, 1000);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('senderName').value;
+                    const email = document.getElementById('senderEmail').value;
+                    const message = document.getElementById('senderMessage').value;
+                    
+                    const whatsappText = `Hi Pabitra,%0A%0AI am ${name}.%0AMy Email is: ${email}%0A%0A${message}`;
+                    
+                    const phoneNumber = "918637028337";
+                    
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappText}`;
+                    window.open(whatsappUrl, '_blank');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
