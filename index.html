@@ -33,6 +33,19 @@
             color: #f8fafc;
             overflow-x: hidden;
             width: 100%;
+            /* Security: Disable text selection across the site */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Allow input interaction for the contact form */
+        input, textarea {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
         }
 
         .bg-orb {
@@ -79,6 +92,19 @@
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
+    
+    <script>
+        /* Security Script: Block Right-click, F12, and common inspection shortcuts */
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.keyCode === 123 || 
+               (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
+               (e.ctrlKey && e.keyCode === 85)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
 </head>
 <body class="antialiased relative overflow-x-hidden w-full max-w-full">
 
@@ -302,143 +328,122 @@
             <div class="mb-12 reveal">
                 <h2 class="text-3xl font-bold mb-4">Recent Projects</h2>
                 <div class="w-20 h-1 bg-brand rounded-full"></div>
-                <p class="text-slate-400 mt-4 max-w-2xl">Here are some of my key projects focused on solving real-world problems and improving user experience:</p>
+                <p class="text-slate-400 mt-4 max-w-2xl">Showcasing my latest work in professional web development and functional applications:</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 
-                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] transition-all duration-300 reveal relative" style="transition-delay: 100ms;">
+                <!-- GULLY SCORER MARKED AS FEATURED -->
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 reveal relative" style="transition-delay: 100ms;">
                     <div class="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10 shadow-lg border border-white/20">
                         <i class="fas fa-star mr-1"></i> Featured
                     </div>
-                    
                     <div class="h-56 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
                         <img src="https://i.ibb.co/KxNbNMK7/Whats-App-Image-2026-01-29-at-11-11-55-AM-removebg-preview.png" alt="Gully Scorer Logo" class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-300 relative z-10">
-                        <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Gully Scorer</h3>
                         <p class="text-slate-400 text-sm mb-4 line-clamp-2">A web app for scoring local cricket matches with simple UI and real-time score updates.</p>
-                        
-                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Real-time score tracking</li>
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Easy UI for local matches</li>
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Highly mobile-friendly layout</li>
-                        </ul>
-
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">HTML</span>
-                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">CSS</span>
-                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
                             <span class="text-xs px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded text-blue-300 font-medium">Firebase</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
                         </div>
-                        
                         <div class="flex gap-3 pt-4 border-t border-white/10">
                             <a href="https://gullyscorer.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-slate-900 text-sm font-semibold rounded-lg transition-colors border border-brand/20">
                                 <i class="fas fa-external-link-alt mr-1"></i> Live Demo
                             </a>
-                            <a href="#" class="flex-1 text-center py-2.5 glass hover:bg-white/10 text-slate-300 hover:text-white text-sm font-semibold rounded-lg transition-colors">
-                                <i class="fas fa-info-circle mr-1"></i> Details
-                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] transition-all duration-300 reveal relative" style="transition-delay: 200ms;">
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 reveal relative" style="transition-delay: 200ms;">
                     <div class="h-56 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
                         <img src="https://i.ibb.co/yB58YyCk/1000715928.png" alt="Falconix Gaming Logo" class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-300 relative z-10">
-                        <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Falconix Gaming Website</h3>
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Falconix Gaming</h3>
                         <p class="text-slate-400 text-sm mb-4 line-clamp-2">A gaming tournament website for organizing and managing online competitions seamlessly.</p>
-                        
-                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Player tournament registration</li>
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Multiple Game Modes (BR & CS)</li>
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Real-time user interaction</li>
-                        </ul>
-
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">HTML/CSS</span>
                             <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
                             <span class="text-xs px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded text-blue-300 font-medium">Firebase</span>
                         </div>
-                        
                         <div class="flex gap-3 pt-4 border-t border-white/10">
                             <a href="https://falconixgaming.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-slate-900 text-sm font-semibold rounded-lg transition-colors border border-brand/20">
                                 <i class="fas fa-external-link-alt mr-1"></i> Live Demo
                             </a>
-                            <a href="#" class="flex-1 text-center py-2.5 glass hover:bg-white/10 text-slate-300 hover:text-white text-sm font-semibold rounded-lg transition-colors">
-                                <i class="fas fa-info-circle mr-1"></i> Details
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition-all duration-300 reveal relative" style="transition-delay: 250ms;">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-[#D33C16] to-[#F4D03F] text-slate-900 text-xs font-black px-3 py-1 rounded-full z-10 shadow-lg">
+                        <i class="fas fa-award mr-1"></i> TOP RATED
+                    </div>
+                    
+                    <div class="h-56 bg-[#1C1512] relative flex items-center justify-center overflow-hidden border-b border-white/10">
+                        <img src="https://i.ibb.co/WpK3nq1S/Whats-App-Image-2026-04-04-at-1-38-32-PM.jpg" alt="Law Firm Logo" class="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-500 relative z-10">
+                        <div class="absolute inset-0 bg-[#D4AF37]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Anjaneya Pramana Legal</h3>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-2">A high-end website for a leading Patna law firm, featuring advanced scroll reveals, glassmorphism UI, and anti-copy security.</p>
+                        
+                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
+                            <li><i class="fas fa-shield-alt text-brand/70 mr-2"></i> Custom Anti-Copy & Inspect protection</li>
+                            <li><i class="fas fa-magic text-brand/70 mr-2"></i> Intersection Observer scroll animations</li>
+                            <li><i class="fas fa-user-tie text-brand/70 mr-2"></i> Dynamic Team Profile system</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">UI/UX Design</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">Tailwind CSS</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">Modern JS</span>
+                        </div>
+                        
+                        <div class="flex gap-3 pt-4 border-t border-white/10">
+                            <a href="https://anjaneya-pramana.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand text-slate-900 text-sm font-bold rounded-lg transition-all hover:brightness-110 shadow-lg shadow-brand/10">
+                                <i class="fas fa-external-link-alt mr-1"></i> Visit Website
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] transition-all duration-300 reveal relative" style="transition-delay: 300ms;">
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 reveal relative" style="transition-delay: 300ms;">
                     <div class="h-56 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
                         <i class="fas fa-tooth text-6xl text-slate-600 group-hover:text-brand transition-colors duration-300 group-hover:scale-110"></i>
-                        <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Smile Care Dental Website</h3>
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Smile Care Dental</h3>
                         <p class="text-slate-400 text-sm mb-4 line-clamp-2">A modern dental clinic website designed to help patients book appointments online.</p>
-                        
-                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Booking system integration</li>
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Before/After gallery</li>
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Fully responsive design</li>
-                        </ul>
-
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">HTML</span>
-                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">CSS</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">Booking API</span>
                             <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
                         </div>
-                        
                         <div class="flex gap-3 pt-4 border-t border-white/10">
                             <a href="https://smilecareclinnic.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-slate-900 text-sm font-semibold rounded-lg transition-colors border border-brand/20">
                                 <i class="fas fa-external-link-alt mr-1"></i> Live Demo
                             </a>
-                            <a href="#" class="flex-1 text-center py-2.5 glass hover:bg-white/10 text-slate-300 hover:text-white text-sm font-semibold rounded-lg transition-colors">
-                                <i class="fas fa-info-circle mr-1"></i> Details
-                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,242,254,0.15)] transition-all duration-300 reveal relative" style="transition-delay: 400ms;">
+                <div class="glass rounded-xl overflow-hidden group hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 reveal relative" style="transition-delay: 350ms;">
                     <div class="h-56 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
                         <i class="fas fa-eye text-6xl text-slate-600 group-hover:text-brand transition-colors duration-300 group-hover:scale-110"></i>
                         <div class="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-2 group-hover:text-brand transition-colors">Eye Clinic Website</h3>
                         <p class="text-slate-400 text-sm mb-4 line-clamp-2">A professional website for eye clinics with appointment booking and service details.</p>
-                        
-                        <ul class="text-sm text-slate-300 mb-6 space-y-2">
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Streamlined appointment form</li>
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Comprehensive services section</li>
-                            <li><i class="fas fa-check-circle text-brand/70 mr-2"></i> Contact & Google Maps integration</li>
-                        </ul>
-
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">HTML</span>
                             <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">CSS</span>
                             <span class="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-slate-300 font-medium">JavaScript</span>
                         </div>
-                        
                         <div class="flex gap-3 pt-4 border-t border-white/10">
                             <a href="https://eyeclinicpab.netlify.app" target="_blank" class="flex-1 text-center py-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-slate-900 text-sm font-semibold rounded-lg transition-colors border border-brand/20">
                                 <i class="fas fa-external-link-alt mr-1"></i> Live Demo
-                            </a>
-                            <a href="#" class="flex-1 text-center py-2.5 glass hover:bg-white/10 text-slate-300 hover:text-white text-sm font-semibold rounded-lg transition-colors">
-                                <i class="fas fa-info-circle mr-1"></i> Details
                             </a>
                         </div>
                     </div>
@@ -563,14 +568,13 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-6 mt-8 pt-8 border-t border-white/5 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
-            <p>&copy; 2024 Pabitra. All rights reserved.</p>
+            <p>&copy; 2026 Pabitra. All rights reserved.</p>
             <p class="mt-2 md:mt-0">Designed & Built with HTML, Tailwind & JS</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
             const navbar = document.getElementById('navbar');
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -580,48 +584,25 @@
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
                 mobileMenu.classList.toggle('flex');
-                
                 if (mobileMenu.classList.contains('hidden')) {
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
+                    menuIcon.classList.replace('fa-times', 'fa-bars');
                 } else {
-                    menuIcon.classList.remove('fa-bars');
-                    menuIcon.classList.add('fa-times');
+                    menuIcon.classList.replace('fa-bars', 'fa-times');
                 }
-            });
-
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex');
-                    menuIcon.classList.remove('fa-times');
-                    menuIcon.classList.add('fa-bars');
-                });
             });
 
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-                    navbar.classList.add('glass', 'shadow-lg');
+                    navbar.classList.add('glass', 'shadow-lg', 'py-2');
                     navbar.classList.remove('py-4');
-                    navbar.classList.add('py-2');
                 } else {
-                    navbar.classList.remove('glass', 'shadow-lg');
+                    navbar.classList.remove('glass', 'shadow-lg', 'py-2');
                     navbar.classList.add('py-4');
-                    navbar.classList.remove('py-2');
                 }
             });
 
-            const textArray = [
-                "Web Developer",
-                "GATE 2026 Qualified",
-                "UI/UX Enthusiast",
-                "Problem Solver"
-            ];
-            const typingDelay = 100;
-            const erasingDelay = 50;
-            const newTextDelay = 2000; 
-            let textArrayIndex = 0;
-            let charIndex = 0;
+            const textArray = ["Web Developer", "GATE 2026 Qualified", "Founder, Falconix Digital", "UI/UX Specialist"];
+            let textArrayIndex = 0, charIndex = 0;
             const typedTextSpan = document.getElementById("typewriter-text");
 
             function type() {
@@ -629,9 +610,9 @@
                     typedTextSpan.classList.add('cursor');
                     typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
                     charIndex++;
-                    setTimeout(type, typingDelay);
+                    setTimeout(type, 100);
                 } else {
-                    setTimeout(erase, newTextDelay);
+                    setTimeout(erase, 2000);
                 }
             }
 
@@ -639,52 +620,33 @@
                 if (charIndex > 0) {
                     typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
                     charIndex--;
-                    setTimeout(erase, erasingDelay);
+                    setTimeout(erase, 50);
                 } else {
-                    textArrayIndex++;
-                    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                    setTimeout(type, typingDelay + 500);
+                    textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                    setTimeout(type, 500);
                 }
             }
-
             setTimeout(type, 1000);
 
-            const revealElements = document.querySelectorAll('.reveal');
-            
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealObserver = new IntersectionObserver(function(entries, observer) {
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
                 });
-            }, revealOptions);
+            }, { threshold: 0.15 });
 
-            revealElements.forEach(el => {
-                revealObserver.observe(el);
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('senderName').value;
+                const email = document.getElementById('senderEmail').value;
+                const message = document.getElementById('senderMessage').value;
+                const text = `Hi Pabitra, I am ${name}. My Email: ${email}. %0A%0A${message}`;
+                window.open(`https://wa.me/918637028337?text=${text}`, '_blank');
             });
-
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const name = document.getElementById('senderName').value;
-                    const email = document.getElementById('senderEmail').value;
-                    const message = document.getElementById('senderMessage').value;
-                    
-                    const whatsappText = `Hi Pabitra,%0A%0AI am ${name}.%0AMy Email is: ${email}%0A%0A${message}`;
-                    
-                    const phoneNumber = "918637028337";
-                    
-                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappText}`;
-                    window.open(whatsappUrl, '_blank');
-                });
-            }
         });
     </script>
 </body>
