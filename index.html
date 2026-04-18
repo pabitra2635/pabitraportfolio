@@ -127,6 +127,54 @@
             user-select: text;
         }
 
+        /* 3D Static Synthwave Grid */
+        .grid-perspective {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        .grid-wave {
+            position: absolute;
+            inset: 0;
+            transform-style: preserve-3d;
+        }
+
+        .tech-grid {
+            position: absolute;
+            width: 200vw;
+            height: 200vh;
+            left: -50vw;
+            top: -30vh;
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 242, 254, 0.4) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(161, 140, 209, 0.4) 1px, transparent 1px);
+            transform: rotateX(75deg);
+            transform-origin: center 50%;
+            mask-image: radial-gradient(ellipse at center 50%, black 10%, transparent 60%);
+            -webkit-mask-image: radial-gradient(ellipse at center 50%, black 10%, transparent 60%);
+        }
+
+        .grid-glow {
+            position: absolute;
+            width: 200vw;
+            height: 200vh;
+            left: -50vw;
+            top: -30vh;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.4), transparent 50%),
+                        radial-gradient(circle at 60% 60%, rgba(161, 140, 209, 0.3), transparent 50%);
+            transform: rotateX(75deg);
+            transform-origin: center 50%;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            mask-image: radial-gradient(ellipse at center 50%, black 10%, transparent 60%);
+            -webkit-mask-image: radial-gradient(ellipse at center 50%, black 10%, transparent 60%);
+        }
+        /* End 3D Grid */
+
         .bg-orb {
             position: absolute;
             border-radius: 50%;
@@ -276,6 +324,13 @@
 </head>
 <body class="antialiased relative overflow-x-hidden w-full max-w-full">
 
+    <div class="grid-perspective" aria-hidden="true">
+        <div class="grid-wave">
+            <div class="tech-grid"></div>
+            <div class="grid-glow"></div>
+        </div>
+    </div>
+    
     <div class="bg-orb orb-1" aria-hidden="true"></div>
     <div class="bg-orb orb-2" aria-hidden="true"></div>
     <div class="bg-orb orb-3" aria-hidden="true"></div>
@@ -490,90 +545,90 @@
                     <p class="text-slate-400 mt-6 max-w-2xl mx-auto text-lg">Showcasing my latest work in professional web development and functional applications:</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-10 gsap-stagger-container">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 gsap-stagger-container">
                     
-                    <article class="glass hover-gradient-glow rounded-2xl overflow-hidden group border border-white/10 transition-all duration-500 tilt-card shadow-xl" data-tilt data-tilt-max="4" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
-                        <div class="absolute top-5 right-5 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-black px-4 py-1.5 rounded-full z-20 shadow-[0_0_15px_rgba(239,68,68,0.5)] transform translate-z-[40px]">
+                    <article class="glass hover-gradient-glow rounded-2xl overflow-hidden group border border-white/10 transition-all duration-500 tilt-card shadow-xl flex flex-col h-full" data-tilt data-tilt-max="4" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-red-500 text-white text-[10px] font-black px-3 py-1 rounded-full z-20 shadow-[0_0_15px_rgba(239,68,68,0.5)] transform translate-z-[40px]">
                             <i class="fas fa-star mr-1" aria-hidden="true"></i> Featured
                         </div>
-                        <div class="h-64 bg-gradient-to-br from-slate-800 to-slate-900 relative flex items-center justify-center overflow-hidden border-b border-white/10">
+                        <div class="h-48 bg-gradient-to-br from-slate-800 to-slate-900 relative flex items-center justify-center overflow-hidden border-b border-white/10 shrink-0">
                             <div class="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" aria-hidden="true"></div>
-                            <img src="https://i.ibb.co/KxNbNMK7/Whats-App-Image-2026-01-29-at-11-11-55-AM-removebg-preview.png" alt="Gully Scorer - Local Cricket Scoring App" class="w-full h-full object-contain p-10 group-hover:scale-110 transition-transform duration-700 relative z-10 drop-shadow-2xl tilt-inner" loading="lazy">
+                            <img src="https://i.ibb.co/KxNbNMK7/Whats-App-Image-2026-01-29-at-11-11-55-AM-removebg-preview.png" alt="Gully Scorer - Local Cricket Scoring App" class="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-700 relative z-10 drop-shadow-2xl tilt-inner" loading="lazy">
                         </div>
-                        <div class="p-8 relative z-10 bg-slate-900/80 backdrop-blur-sm tilt-inner">
-                            <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-brand transition-colors">Gully Scorer</h3>
-                            <p class="text-slate-400 text-base mb-6 line-clamp-2">A web app for scoring local cricket matches with simple UI and real-time score updates using Google's Firebase infrastructure.</p>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-xs px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-blue-600/20 border border-blue-500/30 rounded-md text-blue-300 font-bold">Firebase</span>
-                                <span class="text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">JavaScript</span>
-                                <span class="text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">TailwindCSS</span>
+                        <div class="p-6 relative z-10 bg-slate-900/80 backdrop-blur-sm tilt-inner flex flex-col flex-1">
+                            <h3 class="text-xl font-bold mb-2 text-white group-hover:text-brand transition-colors">Gully Scorer</h3>
+                            <p class="text-slate-400 text-sm mb-4 line-clamp-3 flex-1">A web app for scoring local cricket matches with simple UI and real-time score updates using Google's Firebase infrastructure.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="text-[10px] px-2 py-1 bg-gradient-to-r from-blue-500/20 to-blue-600/20 border border-blue-500/30 rounded-md text-blue-300 font-bold">Firebase</span>
+                                <span class="text-[10px] px-2 py-1 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">JavaScript</span>
+                                <span class="text-[10px] px-2 py-1 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">TailwindCSS</span>
                             </div>
-                            <div class="pt-5 border-t border-white/10">
-                                <a href="https://gullyscorer.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Launch Gully Scorer Application" class="btn-outline block w-full text-center py-3.5 bg-white/5 text-white text-sm font-black rounded-xl border border-white/10">
-                                    <i class="fas fa-external-link-alt mr-2" aria-hidden="true"></i> Launch Application
+                            <div class="pt-4 border-t border-white/10 mt-auto">
+                                <a href="https://gullyscorer.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Launch Gully Scorer Application" class="btn-outline block w-full text-center py-2.5 bg-white/5 text-white text-sm font-black rounded-xl border border-white/10">
+                                    <i class="fas fa-external-link-alt mr-2" aria-hidden="true"></i> Launch App
                                 </a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="glass hover-gradient-glow rounded-2xl overflow-hidden group border border-white/10 transition-all duration-500 tilt-card shadow-xl" data-tilt data-tilt-max="4" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
-                        <div class="absolute top-5 right-5 bg-gradient-to-r from-[#D33C16] to-[#F4D03F] text-slate-900 text-xs font-black px-4 py-1.5 rounded-full z-20 shadow-[0_0_15px_rgba(212,175,55,0.4)] transform translate-z-[40px]">
+                    <article class="glass hover-gradient-glow rounded-2xl overflow-hidden group border border-white/10 transition-all duration-500 tilt-card shadow-xl flex flex-col h-full" data-tilt data-tilt-max="4" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-[#D33C16] to-[#F4D03F] text-slate-900 text-[10px] font-black px-3 py-1 rounded-full z-20 shadow-[0_0_15px_rgba(212,175,55,0.4)] transform translate-z-[40px]">
                             <i class="fas fa-award mr-1" aria-hidden="true"></i> Top Rated
                         </div>
-                        <div class="h-64 bg-[#110d0b] relative flex items-center justify-center overflow-hidden border-b border-white/10">
-                            <img src="https://i.ibb.co/WpK3nq1S/Whats-App-Image-2026-04-04-at-1-38-32-PM.jpg" alt="Anjaneya Pramana Legal Firm Website" class="w-full h-full object-contain p-10 group-hover:scale-105 transition-transform duration-700 relative z-10 drop-shadow-2xl tilt-inner" loading="lazy">
+                        <div class="h-48 bg-[#110d0b] relative flex items-center justify-center overflow-hidden border-b border-white/10 shrink-0">
+                            <img src="https://i.ibb.co/7dvj1LVy/logo.jpg" alt="Anjaneya Pramana Legal Firm Website" class="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-700 relative z-10 drop-shadow-2xl tilt-inner" loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true"></div>
                         </div>
-                        <div class="p-8 relative z-10 bg-slate-900/80 backdrop-blur-sm tilt-inner">
-                            <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-[#D4AF37] transition-colors">Anjaneya Pramana Legal</h3>
-                            <p class="text-slate-400 text-base mb-6 line-clamp-2">A high-end website for a leading Patna law firm, featuring advanced scroll reveals, glassmorphism UI, and custom anti-copy security.</p>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-xs px-3 py-1.5 bg-[#D4AF37]/20 border border-[#D4AF37]/30 rounded-md text-[#D4AF37] font-bold">Premium UI/UX</span>
-                                <span class="text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">Modern JS</span>
-                                <span class="text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">Security</span>
+                        <div class="p-6 relative z-10 bg-slate-900/80 backdrop-blur-sm tilt-inner flex flex-col flex-1">
+                            <h3 class="text-xl font-bold mb-2 text-white group-hover:text-[#D4AF37] transition-colors">Anjaneya Pramana</h3>
+                            <p class="text-slate-400 text-sm mb-4 line-clamp-3 flex-1">A high-end website for a leading Patna law firm, featuring advanced scroll reveals, glassmorphism UI, and custom anti-copy security.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="text-[10px] px-2 py-1 bg-[#D4AF37]/20 border border-[#D4AF37]/30 rounded-md text-[#D4AF37] font-bold">Premium UI/UX</span>
+                                <span class="text-[10px] px-2 py-1 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">Modern JS</span>
+                                <span class="text-[10px] px-2 py-1 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">Security</span>
                             </div>
-                            <div class="pt-5 border-t border-white/10">
-                                <a href="https://anjaneyapramana.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Anjaneya Pramana Website" class="btn-outline block w-full text-center py-3.5 bg-white/5 text-white text-sm font-black rounded-xl border border-white/10">
+                            <div class="pt-4 border-t border-white/10 mt-auto">
+                                <a href="https://anjaneyapramana.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Anjaneya Pramana Website" class="btn-outline block w-full text-center py-2.5 bg-white/5 text-white text-sm font-black rounded-xl border border-white/10">
                                     <i class="fas fa-external-link-alt mr-2" aria-hidden="true"></i> Visit Website
                                 </a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="glass hover-gradient-glow rounded-2xl overflow-hidden group border border-white/10 transition-all duration-500 tilt-card shadow-xl" data-tilt data-tilt-max="4">
-                        <div class="h-64 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10">
-                            <img src="https://i.ibb.co/yB58YyCk/1000715928.png" alt="Falconix Gaming Platform Logo" class="w-full h-full object-contain p-12 group-hover:scale-110 transition-transform duration-700 relative z-10 drop-shadow-2xl tilt-inner" loading="lazy">
+                    <article class="glass hover-gradient-glow rounded-2xl overflow-hidden group border border-white/10 transition-all duration-500 tilt-card shadow-xl flex flex-col h-full" data-tilt data-tilt-max="4">
+                        <div class="h-48 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10 shrink-0">
+                            <img src="https://i.ibb.co/yB58YyCk/1000715928.png" alt="Falconix Gaming Platform Logo" class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-700 relative z-10 drop-shadow-2xl tilt-inner" loading="lazy">
                         </div>
-                        <div class="p-8 relative z-10 bg-slate-900/80 backdrop-blur-sm tilt-inner">
-                            <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-brand transition-colors">Falconix Gaming</h3>
-                            <p class="text-slate-400 text-base mb-6 line-clamp-2">A seamless gaming tournament platform tailored for organizing, managing, and tracking online competitive e-sports seamlessly.</p>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">JavaScript</span>
-                                <span class="text-xs px-3 py-1.5 bg-purple-500/20 border border-purple-500/30 rounded-md text-purple-300 font-bold">Realtime Systems</span>
+                        <div class="p-6 relative z-10 bg-slate-900/80 backdrop-blur-sm tilt-inner flex flex-col flex-1">
+                            <h3 class="text-xl font-bold mb-2 text-white group-hover:text-brand transition-colors">Falconix Gaming</h3>
+                            <p class="text-slate-400 text-sm mb-4 line-clamp-3 flex-1">A seamless gaming tournament platform tailored for organizing, managing, and tracking online competitive e-sports seamlessly.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="text-[10px] px-2 py-1 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">JavaScript</span>
+                                <span class="text-[10px] px-2 py-1 bg-purple-500/20 border border-purple-500/30 rounded-md text-purple-300 font-bold">Realtime Systems</span>
                             </div>
-                            <div class="pt-5 border-t border-white/10">
-                                <a href="https://falconixgaming.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Launch Falconix Gaming Application" class="btn-outline block w-full text-center py-3.5 bg-white/5 text-brand text-sm font-black rounded-xl border border-white/10">
-                                    <i class="fas fa-external-link-alt mr-2" aria-hidden="true"></i> Launch Application
+                            <div class="pt-4 border-t border-white/10 mt-auto">
+                                <a href="https://falconixgaming.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Launch Falconix Gaming Application" class="btn-outline block w-full text-center py-2.5 bg-white/5 text-brand text-sm font-black rounded-xl border border-white/10">
+                                    <i class="fas fa-external-link-alt mr-2" aria-hidden="true"></i> Launch App
                                 </a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="glass hover-gradient-glow rounded-2xl overflow-hidden group border border-white/10 transition-all duration-500 tilt-card shadow-xl" data-tilt data-tilt-max="4">
-                        <div class="h-64 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10 p-6">
+                    <article class="glass hover-gradient-glow rounded-2xl overflow-hidden group border border-white/10 transition-all duration-500 tilt-card shadow-xl flex flex-col h-full" data-tilt data-tilt-max="4">
+                        <div class="h-48 bg-slate-800 relative flex items-center justify-center overflow-hidden border-b border-white/10 p-4 shrink-0">
                             <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" aria-hidden="true"></div>
                             <img src="https://i.ibb.co/S7QB1n9Q/logo.jpg" alt="Kharagpur Physiotherapy Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 relative z-10 drop-shadow-xl tilt-inner rounded-xl" loading="lazy">
                         </div>
-                        <div class="p-8 relative z-10 bg-slate-900/80 backdrop-blur-sm tilt-inner">
-                            <h3 class="text-3xl font-bold mb-3 text-white group-hover:text-brand transition-colors">Kharagpur Physiotherapy</h3>
-                            <p class="text-slate-400 text-base mb-6 line-clamp-2">A professional and modern physiotherapy clinic website designed to facilitate seamless patient appointment bookings and service discovery.</p>
-                            <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="text-xs px-3 py-1.5 bg-cyan-500/20 border border-cyan-500/30 rounded-md text-cyan-300 font-bold">Booking API</span>
-                                <span class="text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">Frontend Dev</span>
+                        <div class="p-6 relative z-10 bg-slate-900/80 backdrop-blur-sm tilt-inner flex flex-col flex-1">
+                            <h3 class="text-xl font-bold mb-2 text-white group-hover:text-brand transition-colors">Kharagpur Physio</h3>
+                            <p class="text-slate-400 text-sm mb-4 line-clamp-3 flex-1">A professional and modern physiotherapy clinic website designed to facilitate seamless patient appointment bookings and service discovery.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-5">
+                                <span class="text-[10px] px-2 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-md text-cyan-300 font-bold">Booking API</span>
+                                <span class="text-[10px] px-2 py-1 bg-white/5 border border-white/10 rounded-md text-slate-300 font-bold">Frontend Dev</span>
                             </div>
-                            <div class="pt-5 border-t border-white/10">
-                                <a href="https://kharagpurphysiotherapy.in/" target="_blank" rel="noopener noreferrer" aria-label="Launch Kharagpur Physiotherapy Application" class="btn-outline block w-full text-center py-3.5 bg-white/5 text-brand text-sm font-black rounded-xl border border-white/10">
-                                    <i class="fas fa-external-link-alt mr-2" aria-hidden="true"></i> Launch Application
+                            <div class="pt-4 border-t border-white/10 mt-auto">
+                                <a href="https://kharagpurphysiotherapy.in/" target="_blank" rel="noopener noreferrer" aria-label="Launch Kharagpur Physiotherapy Application" class="btn-outline block w-full text-center py-2.5 bg-white/5 text-brand text-sm font-black rounded-xl border border-white/10">
+                                    <i class="fas fa-external-link-alt mr-2" aria-hidden="true"></i> Launch App
                                 </a>
                             </div>
                         </div>
