@@ -276,7 +276,7 @@
 </head>
 <body class="antialiased relative overflow-x-hidden w-full max-w-full">
 
-    <canvas id="matrix-canvas" class="fixed inset-0 w-full h-full -z-[2] pointer-events-none opacity-30" aria-hidden="true"></canvas>
+    <canvas id="matrix-canvas" class="fixed inset-0 w-full h-full -z-[2] pointer-events-none opacity-50" aria-hidden="true"></canvas>
     
     <div class="bg-orb orb-1" aria-hidden="true"></div>
     <div class="bg-orb orb-2" aria-hidden="true"></div>
@@ -720,7 +720,7 @@
             let width = canvas.width = window.innerWidth;
             let height = canvas.height = window.innerHeight;
 
-            const chars = '01';
+            const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzঅআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহ';
             const colors = ['#00f2fe', '#4facfe', '#a18cd1', '#fbc2eb', '#FF2000', '#FF7A00', '#FFC500'];
             const fontSize = 16;
             let columns = Math.floor(width / fontSize);
@@ -744,7 +744,7 @@
                 ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
                 ctx.fillRect(0, 0, width, height);
 
-                ctx.font = fontSize + 'px monospace';
+                ctx.font = fontSize + 'px monospace, sans-serif';
 
                 for (let i = 0; i < drops.length; i++) {
                     const text = chars.charAt(Math.floor(Math.random() * chars.length));
